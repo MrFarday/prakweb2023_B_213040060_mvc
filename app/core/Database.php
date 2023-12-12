@@ -22,7 +22,7 @@ public function __construct()
 
     try {
         $this->dbh = new PDO($dsn, $this->user, $this->pass, $option);
-    } catch(PDOExeption $e) {
+    } catch(PDOException $e) {
         die($e->getMessage());
     }
 }
@@ -69,5 +69,12 @@ public function single()
     $this->execute();
     return $this->stmt->fetch(PDO::FETCH_ASSOC);
 }
+
+public function rowCount()
+{
+    return $this->stmt->rowCount();
+}
+
+
 
 }
